@@ -1,0 +1,133 @@
+{
+  "app": {
+    "title": "Random Hero"
+  },
+  "language": {
+    "label": "Language",
+    "es": "Español",
+    "en": "English"
+  },
+  "panel": {
+    "title": "RANDOM HERO",
+    "disconnected": "⚠ Can't reach the program. Open it with <b>start.bat</b>.",
+    "preview": {
+      "empty": "Overlay preview (1920×1080)"
+    },
+    "heroes": {
+      "loading": "Loading heroes…",
+      "failed": "✖ Couldn't load the hero list",
+      "fromCache": "⚠ API not responding: using {{count}} saved heroes"
+    },
+    "twitch": {
+      "title": "Step 01 · Connect Twitch",
+      "hint": "Log in with your Twitch streamer account. You don't need to create any app: just authorize the program.",
+      "connect": "Connect with Twitch",
+      "authorizeInTab": "Twitch opened in another tab with the code already filled in: click Activate and then Authorize. This panel will connect on its own.",
+      "code": "Activation code",
+      "openAgain": "Open Twitch again ↗",
+      "cancel": "Cancel",
+      "waiting": "Waiting for you to authorize it… The code expires at {{time}}.",
+      "status": {
+        "connected": "● Listening for redemptions",
+        "connecting": "● Connecting…",
+        "error": "● Error",
+        "disconnected": "● Stopped"
+      },
+      "rememberedUntil": "✓ Session remembered until {{date}}",
+      "logout": "Disconnect"
+    },
+    "reward": {
+      "title": "Step 02 · Choose reward",
+      "loginFirst": "🔒 Connect your Twitch account first to see your rewards.",
+      "hint": "Tap the reward that will trigger the overlay:",
+      "listLabel": "Your channel's public rewards",
+      "cost": "{{cost}} pts",
+      "paused": "paused",
+      "loading": "Loading your rewards…",
+      "empty": "Your channel has no active public rewards.",
+      "emptyHint": "Then come back here and press ⟳ to reload.",
+      "reload": "Reload rewards",
+      "saved": "✓ Saved",
+      "change": "Change reward",
+      "cancel": "Cancel",
+      "rememberedUntil": "Remembered until {{date}}",
+      "missing": "The reward “{{title}}” is no longer active on your channel. Choose another one.",
+      "create": "Create a reward on Twitch ↗"
+    },
+    "obs": {
+      "title": "Step 03 · Add to OBS",
+      "urlLabel": "OBS URL",
+      "copy": "Copy",
+      "copied": "✔ Copied"
+    },
+    "test": {
+      "title": "Step 04 · Test overlay",
+      "viewerLabel": "Viewer name (optional)",
+      "button": "🎰 Test overlay",
+      "defaultViewer": "Test"
+    },
+    "program": {
+      "title": "Program",
+      "shutdown": "⏻ Shut down program",
+      "confirmShutdown": "Shut down the program? The OBS overlay will stop receiving redemptions until you open start.bat again.",
+      "off": "Off. To start it, open <b>start.bat</b>."
+    },
+    "history": {
+      "title": "Latest draws"
+    }
+  },
+  "overlay": {
+    "title": "RANDOM HERO",
+    "summonPrefix": "",
+    "summonSuffix": " summons a hero!",
+    "cardText": "Play this hero in your next match!",
+    "warnings": {
+      "heroesFailed": "Couldn't load the hero list (OverFast API).",
+      "disconnected": "Can't reach the program: open start.bat.",
+      "noSession": "No Twitch session: connect it in step 01 of the panel.",
+      "noReward": "No reward chosen: choose it in step 02 of the panel."
+    }
+  },
+  "roles": {
+    "tank": "Tank",
+    "damage": "Damage",
+    "support": "Support"
+  },
+  "subroles": {
+    "bruiser": "Bruiser",
+    "initiator": "Initiator",
+    "stalwart": "Stalwart",
+    "flanker": "Flanker",
+    "recon": "Recon",
+    "sharpshooter": "Sharpshooter",
+    "specialist": "Specialist",
+    "medic": "Medic",
+    "survivor": "Survivor",
+    "tactician": "Tactician"
+  },
+  "errors": {
+    "rewardTitleTooLong": "The reward title can't be longer than {{max}} characters.",
+    "noHeroes": "No heroes available for the draw.",
+    "loginRequired": "Connect your Twitch account first (step 01).",
+    "rewardsForbidden": "Twitch won't share the rewards: your channel must be Affiliate or Partner to have channel points.",
+    "rewardsFailed": "Couldn't load your channel's rewards (error {{status}}).",
+    "sessionRevoked": "Your Twitch session expired or was revoked. Please connect your account again.",
+    "sessionExpired": "It's been 30 days since you connected Twitch. Please connect your account again.",
+    "eventsubRevoked": "Twitch revoked the redemptions subscription ({{status}}). Please connect your account again.",
+    "eventsubNoSession": "No Twitch session.",
+    "eventsubTokenInvalid": "Your Twitch session expired. Please connect your account again.",
+    "eventsubForbidden": "Missing the channel:read:redemptions permission, or your channel doesn't have channel points.",
+    "eventsubSubscribeFailed": "Twitch rejected the redemptions subscription (error {{status}}).",
+    "internal": "Internal program error.",
+    "originNotAllowed": "Origin not allowed.",
+    "notFound": "Route not found.",
+    "mustBeJson": "The request must be JSON.",
+    "requestTooLarge": "Request too large.",
+    "invalidJson": "Invalid JSON.",
+    "connectionUnavailable": "Can't reach the program. Open it with start.bat.",
+    "serverError": "The program returned an error ({{status}}).",
+    "activationExpired": "The code expired. Click “Connect with Twitch” again.",
+    "activationRejected": "Twitch didn't complete the login ({{detail}}). Please try again.",
+    "clientIdRejected": "Twitch didn't accept the program's app ({{detail}})."
+  }
+}

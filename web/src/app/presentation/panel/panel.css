@@ -1,0 +1,305 @@
+:host {
+  display: block;
+  color: #e6efff;
+  font-family: 'Rajdhani', sans-serif;
+}
+
+/* Same layout as Brawl Roulette: preview on the left, full-height steps sidebar on the right. */
+.layout {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) 380px;
+  min-height: 100vh;
+}
+
+.main {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  min-width: 0;
+  padding: 28px clamp(16px, 3vw, 40px) 40px;
+}
+
+.brand {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+}
+
+.brand h1 {
+  margin: 0;
+  font: italic 700 44px/1 'Rajdhani', sans-serif;
+  letter-spacing: 4px;
+  background: linear-gradient(180deg, #fff8d0, #ffd24a 45%, #c27a00 55%, #ffe69a);
+  background-clip: text;
+  -webkit-background-clip: text;
+  color: transparent;
+}
+
+.brand-logo {
+  flex: none;
+  width: 52px;
+  height: 52px;
+  border-radius: 50%;
+  box-shadow: 0 0 0 3px #3b2a06, 0 0 24px rgb(255 210 74 / 0.35);
+}
+
+.brand-language {
+  margin-left: auto;
+}
+
+/* The gold line separates the sidebar from the main area. */
+.sidebar {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+  padding: 20px 16px 32px;
+  border-left: 1px solid rgb(255 210 74 / 0.45);
+  background: linear-gradient(180deg, rgb(10 21 48 / 0.96), rgb(5 11 30 / 0.98));
+  box-shadow: -12px 0 40px rgb(0 0 0 / 0.4);
+}
+
+@media (max-width: 1000px) {
+  .layout {
+    grid-template-columns: minmax(0, 1fr);
+  }
+
+  .sidebar {
+    border-left: 0;
+    border-top: 1px solid rgb(255 210 74 / 0.45);
+  }
+}
+
+.screen {
+  position: relative;
+  aspect-ratio: 16 / 9;
+  overflow: hidden;
+  border: 2px solid #2a6fd6;
+  border-radius: 10px;
+  background:
+    repeating-conic-gradient(#101830 0 25%, #0c1326 0 50%) 0 0 / 32px 32px;
+}
+
+.screen-empty {
+  position: absolute;
+  inset: 0;
+  display: grid;
+  place-items: center;
+  color: #4d6a99;
+  font-size: 22px;
+}
+
+.note {
+  margin: 14px 0 0;
+  color: #8fb3e8;
+  font-size: 16px;
+}
+
+/* Same measurements as Brawl Roulette's steps: the spacing comes from the gap, not from margins. */
+.card {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  padding: 16px;
+  border: 1px solid #23457a;
+  border-radius: 12px;
+  background: linear-gradient(180deg, #0e1d3d, #0a1530);
+}
+
+.card.locked {
+  opacity: 0.55;
+}
+
+.card.done {
+  border-color: #2f8a5a;
+}
+
+.card h2 {
+  margin: 0 0 2px;
+  font-size: 20px;
+  letter-spacing: 1px;
+  color: #6fe0ff;
+}
+
+.card p {
+  margin: 0;
+  font-size: 16px;
+}
+
+.card small {
+  color: #8fb3e8;
+}
+
+button {
+  padding: 11px 16px;
+  border: 1px solid #3c7be0;
+  border-radius: 9px;
+  background: #13306a;
+  color: #fff;
+  font: 700 16px 'Rajdhani', sans-serif;
+  cursor: pointer;
+}
+
+button:hover:not(:disabled) {
+  background: #1b4290;
+}
+
+button:disabled {
+  opacity: 0.5;
+  cursor: default;
+}
+
+button.primary {
+  border-color: #ffd24a;
+  background: linear-gradient(180deg, #ffcf4a, #d18a00);
+  color: #2a1800;
+}
+
+button.twitch {
+  border-color: #a970ff;
+  background: #9146ff;
+}
+
+.url {
+  display: flex;
+  gap: 8px;
+}
+
+.url input {
+  flex: 1;
+  min-width: 0;
+  padding: 10px 12px;
+  border: 1px solid #23457a;
+  border-radius: 8px;
+  background: #050b1e;
+  color: #e6efff;
+}
+
+.url button {
+  flex: none;
+  padding-inline: 12px;
+}
+
+.error {
+  color: #ff8a8a;
+}
+
+code {
+  padding: 1px 5px;
+  border-radius: 4px;
+  background: #050b1e;
+  color: #ffd24a;
+}
+
+.history {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.history li {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 6px 0;
+  border-bottom: 1px solid #1a3361;
+  font-size: 16px;
+}
+
+.history img {
+  width: 36px;
+  height: 36px;
+  border-radius: 6px;
+}
+
+.history span {
+  flex: 1;
+}
+
+.error-banner {
+  padding: 10px 16px;
+  border: 1px solid #a83232;
+  border-radius: 8px;
+  background: #3a0d0d;
+  color: #ffd0d0;
+  font-size: 17px;
+}
+
+.account {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.avatar {
+  display: grid;
+  flex: none;
+  place-items: center;
+  width: 40px;
+  height: 40px;
+  border: 2px solid #a970ff;
+  border-radius: 50%;
+  background: #9146ff;
+  color: #fff;
+  font: 700 22px 'Rajdhani', sans-serif;
+}
+
+.account-name {
+  font-size: 19px;
+  font-weight: 700;
+}
+
+.card small.saved {
+  color: #6fe39a;
+}
+
+.card h2.with-action {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 8px;
+}
+
+button.reload {
+  padding: 3px 8px;
+  border-radius: 5px;
+  font-size: 16px;
+  line-height: 1;
+}
+
+.listener-state {
+  font-weight: 700;
+}
+
+.listener-state[data-state='connected'] { color: #6fe39a; }
+.listener-state[data-state='connecting'] { color: #ffd24a; }
+.listener-state[data-state='error'],
+.listener-state[data-state='disconnected'] { color: #ff8a8a; }
+
+.field {
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+}
+
+.field-label {
+  color: #8fb3e8;
+  font-size: 14px;
+  font-weight: 700;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+}
+
+.text-input {
+  padding: 10px 12px;
+  border: 1px solid #23457a;
+  border-radius: 8px;
+  background: #050b1e;
+  color: #e6efff;
+  font: 600 16px 'Rajdhani', sans-serif;
+}
+
+.text-input:focus {
+  outline: none;
+  border-color: #ffd24a;
+}
+

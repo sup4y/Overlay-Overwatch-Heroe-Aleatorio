@@ -1,0 +1,63 @@
+<div
+  #stage
+  class="stage"
+  [class]="'phase-' + phase()"
+  [style.transform]="'translate(-50%, -50%) scale(' + scale() + ')'"
+>
+  <div class="duel-background"></div>
+
+  <div class="table">
+    <div class="felt">
+      <div class="felt-line"></div>
+      <div class="felt-text">★ {{ 'overlay.title' | transloco }} ★</div>
+    </div>
+    <div class="chips" style="left: 300px; top: 560px; --color: #c0272d"><i></i><i></i><i></i><i></i></div>
+    <div class="chips" style="left: 390px; top: 600px; --color: #1d1d1d"><i></i><i></i><i></i></div>
+    <div class="chips" style="right: 320px; top: 580px; --color: #1f4fbf"><i></i><i></i><i></i><i></i><i></i></div>
+  </div>
+
+  <div class="flash"></div>
+
+  @for (hero of cards(); track $index) {
+    <div class="card">
+      <div class="card-lift">
+        <div class="card-aura"></div>
+        <div class="card-flip">
+          <div class="face back">
+            <div class="back-swirl"></div>
+            <div class="back-oval"><div class="back-emblem"></div></div>
+          </div>
+
+          <div class="face front" [attr.data-role]="hero.role">
+            <div class="front-name">
+              <span>{{ hero.name }}</span>
+              <b class="attribute">{{ roleSymbol[hero.role] }}</b>
+            </div>
+            <div class="front-stars">★★★★</div>
+            <div class="front-image"><img [src]="hero.portrait" [alt]="hero.name" /></div>
+            <div class="front-text">
+              <strong>[ {{ 'roles.' + hero.role | transloco }}@if (hero.subrole) { / {{ 'subroles.' + hero.subrole | transloco }}} ]</strong>
+              <p>{{ 'overlay.cardText' | transloco }}</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  }
+
+  <div class="particles"></div>
+
+  <div class="title-banner">
+    <div class="plate"><span class="title">{{ 'overlay.title' | transloco }}</span></div>
+    <div class="subtitle">{{ 'overlay.summonPrefix' | transloco }}<b>{{ viewerName() }}</b>{{ 'overlay.summonSuffix' | transloco }}</div>
+  </div>
+
+  @if (chosen(); as hero) {
+    <div class="result-banner">
+      <div class="result-name">{{ hero.name }}</div>
+      <div class="result-role">
+        {{ 'roles.' + hero.role | transloco }}@if (hero.subrole) { · {{ 'subroles.' + hero.subrole | transloco }}}
+      </div>
+    </div>
+  }
+</div>

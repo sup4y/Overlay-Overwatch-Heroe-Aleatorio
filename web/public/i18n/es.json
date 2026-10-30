@@ -1,0 +1,133 @@
+{
+  "app": {
+    "title": "Héroe Aleatorio"
+  },
+  "language": {
+    "label": "Idioma",
+    "es": "Español",
+    "en": "English"
+  },
+  "panel": {
+    "title": "HÉROE ALEATORIO",
+    "disconnected": "⚠ Sin conexión con el programa. Ábrelo con <b>start.bat</b>.",
+    "preview": {
+      "empty": "Vista previa del overlay (1920×1080)"
+    },
+    "heroes": {
+      "loading": "Cargando héroes…",
+      "failed": "✖ No se pudo cargar la lista de héroes",
+      "fromCache": "⚠ API sin respuesta: usando {{count}} héroes guardados"
+    },
+    "twitch": {
+      "title": "Paso 01 · Conectar Twitch",
+      "hint": "Inicia sesión con tu cuenta de Twitch de streamer. No hace falta crear ninguna app: solo autorizar el programa.",
+      "connect": "Conectar con Twitch",
+      "authorizeInTab": "Se ha abierto Twitch en otra pestaña con el código ya puesto: pulsa Activar y después Autorizar. Este panel se conectará solo.",
+      "code": "Código de activación",
+      "openAgain": "Abrir Twitch de nuevo ↗",
+      "cancel": "Cancelar",
+      "waiting": "Esperando a que lo autorices… El código caduca a las {{time}}.",
+      "status": {
+        "connected": "● Escuchando canjes",
+        "connecting": "● Conectando…",
+        "error": "● Error",
+        "disconnected": "● Detenido"
+      },
+      "rememberedUntil": "✓ Sesión recordada hasta el {{date}}",
+      "logout": "Desconectar"
+    },
+    "reward": {
+      "title": "Paso 02 · Elegir canje",
+      "loginFirst": "🔒 Conecta primero tu cuenta de Twitch para ver tus canjes.",
+      "hint": "Toca el canje que activará el overlay:",
+      "listLabel": "Canjes públicos de tu canal",
+      "cost": "{{cost}} pts",
+      "paused": "en pausa",
+      "loading": "Cargando tus canjes…",
+      "empty": "Tu canal no tiene canjes públicos activos.",
+      "emptyHint": "Después vuelve aquí y pulsa ⟳ para recargar.",
+      "reload": "Recargar canjes",
+      "saved": "✓ Guardado",
+      "change": "Cambiar canje",
+      "cancel": "Cancelar",
+      "rememberedUntil": "Se recordará hasta el {{date}}",
+      "missing": "El canje «{{title}}» ya no está activo en tu canal. Elige otro.",
+      "create": "Crear un canje en Twitch ↗"
+    },
+    "obs": {
+      "title": "Paso 03 · Añadir a OBS",
+      "urlLabel": "URL para OBS",
+      "copy": "Copiar",
+      "copied": "✔ Copiada"
+    },
+    "test": {
+      "title": "Paso 04 · Probar overlay",
+      "viewerLabel": "Nombre del espectador (opcional)",
+      "button": "🎰 Probar overlay",
+      "defaultViewer": "Prueba"
+    },
+    "program": {
+      "title": "Programa",
+      "shutdown": "⏻ Apagar programa",
+      "confirmShutdown": "¿Apagar el programa? El overlay de OBS dejará de recibir canjes hasta que vuelvas a abrir start.bat.",
+      "off": "Apagado. Para encenderlo, abre <b>start.bat</b>."
+    },
+    "history": {
+      "title": "Últimas tiradas"
+    }
+  },
+  "overlay": {
+    "title": "HÉROE ALEATORIO",
+    "summonPrefix": "¡",
+    "summonSuffix": " invoca un héroe!",
+    "cardText": "¡Juega con este héroe en tu próxima partida!",
+    "warnings": {
+      "heroesFailed": "No se pudo cargar la lista de héroes (OverFast API).",
+      "disconnected": "Sin conexión con el programa: abre start.bat.",
+      "noSession": "Sin sesión de Twitch: conéctala en el paso 01 del panel.",
+      "noReward": "Sin canje elegido: elígelo en el paso 02 del panel."
+    }
+  },
+  "roles": {
+    "tank": "Tanque",
+    "damage": "Daño",
+    "support": "Apoyo"
+  },
+  "subroles": {
+    "bruiser": "Luchador",
+    "initiator": "Iniciador",
+    "stalwart": "Defensor",
+    "flanker": "Flanqueador",
+    "recon": "Explorador",
+    "sharpshooter": "Tirador",
+    "specialist": "Especialista",
+    "medic": "Médico",
+    "survivor": "Superviviente",
+    "tactician": "Táctico"
+  },
+  "errors": {
+    "rewardTitleTooLong": "El título del canje no puede superar {{max}} caracteres.",
+    "noHeroes": "No hay héroes disponibles para hacer la tirada.",
+    "loginRequired": "Conecta primero tu cuenta de Twitch (paso 01).",
+    "rewardsForbidden": "Twitch no deja ver las recompensas: tu canal necesita ser Afiliado o Partner para tener puntos de canal.",
+    "rewardsFailed": "No se pudieron cargar las recompensas de tu canal (error {{status}}).",
+    "sessionRevoked": "La sesión de Twitch caducó o se revocó. Vuelve a conectar tu cuenta.",
+    "sessionExpired": "Han pasado 30 días desde que conectaste Twitch. Vuelve a conectar tu cuenta.",
+    "eventsubRevoked": "Twitch revocó la suscripción a los canjes ({{status}}). Vuelve a conectar tu cuenta.",
+    "eventsubNoSession": "No hay sesión de Twitch.",
+    "eventsubTokenInvalid": "La sesión de Twitch caducó. Vuelve a conectar tu cuenta.",
+    "eventsubForbidden": "Falta el permiso channel:read:redemptions o tu canal no tiene puntos de canal.",
+    "eventsubSubscribeFailed": "Twitch rechazó la suscripción a los canjes (error {{status}}).",
+    "internal": "Error interno del programa.",
+    "originNotAllowed": "Origen no permitido.",
+    "notFound": "Ruta no encontrada.",
+    "mustBeJson": "La petición debe ser JSON.",
+    "requestTooLarge": "Petición demasiado grande.",
+    "invalidJson": "JSON no válido.",
+    "connectionUnavailable": "No hay conexión con el programa. Ábrelo con start.bat.",
+    "serverError": "El programa respondió con un error ({{status}}).",
+    "activationExpired": "El código caducó. Pulsa otra vez «Conectar con Twitch».",
+    "activationRejected": "Twitch no completó el inicio de sesión ({{detail}}). Inténtalo de nuevo.",
+    "clientIdRejected": "Twitch no aceptó la app del programa ({{detail}})."
+  }
+}

@@ -1,0 +1,135 @@
+<div class="layout">
+  <!-- Main area: title, language and preview -->
+  <main class="main">
+    <header class="brand">
+      <img class="brand-logo" src="overwatch-logo.png" alt="" width="52" height="52" />
+      <h1>{{ 'panel.title' | transloco }}</h1>
+      <app-language-selector class="brand-language" />
+    </header>
+
+    @if (!serverState.connected()) {
+      <div class="error-banner" role="alert" [innerHTML]="'panel.disconnected' | transloco"></div>
+    }
+
+    <section class="preview">
+      <div class="screen">
+        <app-roulette />
+        @if (!animating()) {
+          <div class="screen-empty">{{ 'panel.preview.empty' | transloco }}</div>
+        }
+      </div>
+      @if (!draws.loaded()) {
+        <p class="note">{{ 'panel.heroes.loading' | transloco }}</p>
+      } @else if (draws.catalog().length === 0) {
+        <p class="note">{{ 'panel.heroes.failed' | transloco }}</p>
+      } @else if (draws.fromCache()) {
+        <p class="note">{{ 'panel.heroes.fromCache' | transloco: { count: draws.catalog().length } }}</p>
+      }
+    </section>
+  </main>
+
+  <!-- Right sidebar: the steps -->
+  <aside class="sidebar">
+    <section class="card" [class.done]="!!session.current()">
+      <h2>{{ 'panel.twitch.title' | transloco }}</h2>
+      @if (session.current(); as s) {
+        <div class="account">
+          <div class="avatar" aria-hidden="true">{{ s.login.charAt(0).toUpperCase() }}</div>
+          <div>
+            <div class="account-name">{{ s.login }}</div>
+            <div class="listener-state" [attr.data-state]="redemptions.listenerState()">
+              {{ 'panel.twitch.status.' + redemptions.listenerState() | transloco }}
+            </div>
+          </div>
+        </div>
+        <small class="saved">{{ 'panel.twitch.rememberedUntil' | transloco: { date: formatDate(s.expiresAt) } }}</small>
+        <button (click)="logout()" [disabled]="busy()">{{ 'panel.twitch.logout' | transloco }}</button>
+      } @else {
+        <app-connect-twitch [disabled]="!serverState.connected()" />
+      }
+      @if (actionError() ?? redemptions.error(); as error) {
+        <p class="error" role="alert">{{ 'errors.' + error.code | transloco: error.params }}</p>
+      }
+    </section>
+
+    <section
+      class="card"
+      [class.locked]="!session.current()"
+      [class.done]="!!session.current() && !!settings.current()?.hasReward && !redemptions.chosenRewardMissing()"
+    >
+      <h2 class="with-action">
+        {{ 'panel.reward.title' | transloco }}
+        @if (session.current()) {
+          <button
+            type="button"
+            class="reload"
+            (click)="redemptions.loadRewards()"
+            [disabled]="redemptions.loadingRewards()"
+            [attr.aria-label]="'panel.reward.reload' | transloco"
+            [title]="'panel.reward.reload' | transloco"
+          >
+            ⟳
+          </button>
+        }
+      </h2>
+      @if (!session.current()) {
+        <p>{{ 'panel.reward.loginFirst' | transloco }}</p>
+      } @else {
+        <app-reward-selector />
+      }
+    </section>
+
+    <section class="card">
+      <h2>{{ 'panel.obs.title' | transloco }}</h2>
+      <div class="url">
+        <input readonly [value]="obsUrl()" [attr.aria-label]="'panel.obs.urlLabel' | transloco" />
+        <button (click)="copyUrl()">{{ (copied() ? 'panel.obs.copied' : 'panel.obs.copy') | transloco }}</button>
+      </div>
+    </section>
+
+    <section class="card">
+      <h2>{{ 'panel.test.title' | transloco }}</h2>
+      <label class="field">
+        <span class="field-label">{{ 'panel.test.viewerLabel' | transloco }}</span>
+        <input
+          class="text-input"
+          [value]="testViewer()"
+          (input)="testViewer.set($any($event.target).value)"
+          (keydown.enter)="testOverlay()"
+          [placeholder]="defaultViewer()"
+          maxlength="25"
+        />
+      </label>
+      <button class="primary" (click)="testOverlay()" [disabled]="busy() || !serverState.connected()">
+        {{ 'panel.test.button' | transloco }}
+      </button>
+      @if (testError(); as error) {
+        <p class="error" role="alert">{{ 'errors.' + error.code | transloco: error.params }}</p>
+      }
+    </section>
+
+    <section class="card">
+      <h2>{{ 'panel.program.title' | transloco }}</h2>
+      @if (serverState.connected()) {
+        <button (click)="shutdown()" [disabled]="busy()">{{ 'panel.program.shutdown' | transloco }}</button>
+      } @else {
+        <p [innerHTML]="'panel.program.off' | transloco"></p>
+      }
+    </section>
+
+    @if (history().length) {
+      <section class="card">
+        <h2>{{ 'panel.history.title' | transloco }}</h2>
+        <ul class="history">
+          @for (draw of history(); track draw.date) {
+            <li>
+              <img [src]="draw.chosenHero.portrait" alt="" />
+              <span><b>{{ draw.viewerName }}</b> → {{ draw.chosenHero.name }}</span>
+              <small>{{ formatTime(draw.date) }}</small>
+            </li>
+          }
+        </ul>
+      </section>
+    }
+  </aside>
+</div>

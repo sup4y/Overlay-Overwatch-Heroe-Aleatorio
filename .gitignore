@@ -1,0 +1,8 @@
+﻿# Datos locales del streamer (incluye los tokens de Twitch)
+data/
+logs/
+server.pid
+
+node_modules/
+web/dist/
+web/.angular/

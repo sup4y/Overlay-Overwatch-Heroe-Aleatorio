@@ -1,0 +1,163 @@
+/* Same measurements as Brawl Roulette's step 2: the spacing comes from the gap. */
+:host {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+p {
+  margin: 0;
+  font-size: 16px;
+}
+
+.rewards {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  max-height: 340px;
+  margin: 0;
+  padding: 0 2px 0 0;
+  overflow-y: auto;
+  list-style: none;
+}
+
+.reward {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  box-sizing: border-box; /* the 100% width includes padding and border, so it doesn't overflow the card */
+  width: 100%;
+  padding: 10px;
+  border: 1px solid #23457a;
+  border-radius: 10px;
+  background: #050b1e;
+  color: #e6efff;
+  font: 600 16px 'Rajdhani', sans-serif;
+  text-align: left;
+  cursor: pointer;
+}
+
+.reward.static {
+  cursor: default;
+}
+
+.reward:not(.static):hover:not(:disabled) {
+  border-color: #3c7be0;
+  background: #0a1530;
+}
+
+.reward:focus-visible {
+  outline: 2px solid #6fe0ff;
+  outline-offset: 1px;
+}
+
+.reward:disabled {
+  opacity: 0.6;
+  cursor: default;
+}
+
+.reward.selected {
+  border-color: #ffd24a;
+  background: linear-gradient(180deg, #13306a, #0e1d3d);
+  box-shadow: 0 0 0 1px #ffd24a inset;
+}
+
+.icon {
+  flex: none;
+  display: grid;
+  place-items: center;
+  width: 40px;
+  height: 40px;
+  border-radius: 8px;
+  background: #13306a;
+}
+
+.icon img {
+  width: 28px;
+  height: 28px;
+}
+
+.body {
+  flex: 1;
+  min-width: 0;
+  display: flex;
+  flex-direction: column;
+}
+
+.title {
+  overflow: hidden;
+  font-weight: 700;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.meta {
+  color: #8fb3e8;
+  font-size: 14px;
+}
+
+.paused {
+  color: #ffd24a;
+}
+
+.check {
+  flex: none;
+  width: 20px;
+  color: #ffd24a;
+  font-size: 20px;
+  font-weight: 700;
+  text-align: center;
+}
+
+.saved {
+  flex: none;
+  padding: 3px 8px;
+  border: 1px solid #6fe39a;
+  border-radius: 999px;
+  color: #6fe39a;
+  font-size: 14px;
+  font-weight: 700;
+  white-space: nowrap;
+}
+
+button.change {
+  padding: 11px 16px;
+  border: 1px solid #3c7be0;
+  border-radius: 9px;
+  background: #13306a;
+  color: #fff;
+  font: 700 16px 'Rajdhani', sans-serif;
+  cursor: pointer;
+}
+
+button.change:hover {
+  background: #1b4290;
+}
+
+.note,
+small {
+  color: #8fb3e8;
+}
+
+.warning {
+  color: #ffd24a;
+}
+
+.error {
+  color: #ff8a8a;
+}
+
+a.create {
+  padding: 11px 16px;
+  border: 1px solid #3c7be0;
+  border-radius: 9px;
+  text-align: center;
+  background: #13306a;
+  color: #fff;
+  font: 700 16px 'Rajdhani', sans-serif;
+  text-decoration: none;
+}
+
+a.create:hover {
+  background: #1b4290;
+}

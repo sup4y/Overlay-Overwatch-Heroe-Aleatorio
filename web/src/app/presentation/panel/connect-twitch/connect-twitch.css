@@ -1,0 +1,94 @@
+/* Same measurements as Brawl Roulette's step 1: the spacing comes from the gap. */
+:host {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+p {
+  margin: 0;
+  font-size: 16px;
+}
+
+small {
+  color: #8fb3e8;
+  font-size: 14px;
+}
+
+button {
+  padding: 11px 16px;
+  border: 1px solid #3c7be0;
+  border-radius: 9px;
+  background: #13306a;
+  color: #fff;
+  font: 700 16px 'Rajdhani', sans-serif;
+  cursor: pointer;
+}
+
+button:hover:not(:disabled) {
+  background: #1b4290;
+}
+
+button:disabled {
+  opacity: 0.5;
+  cursor: default;
+}
+
+button.twitch {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  border-color: #a970ff;
+  background: #9146ff;
+}
+
+button.twitch:hover:not(:disabled) {
+  background: #a970ff;
+}
+
+button.twitch svg {
+  width: 18px;
+  height: 18px;
+}
+
+.code {
+  padding: 10px;
+  border: 2px dashed #a970ff;
+  border-radius: 10px;
+  background: #050b1e;
+  color: #fff;
+  font: 700 30px/1 'Rajdhani', monospace;
+  letter-spacing: 0.3em;
+  text-align: center;
+}
+
+.row {
+  display: flex;
+  gap: 8px;
+}
+
+a.link-button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 11px 16px;
+  border: 1px solid #a970ff;
+  border-radius: 9px;
+  color: #fff;
+  font: 700 16px 'Rajdhani', sans-serif;
+  text-decoration: none;
+}
+
+a.link-button.twitch {
+  background: #9146ff;
+}
+
+a.link-button.twitch:hover {
+  background: #a970ff;
+}
+
+.error {
+  color: #ff8a8a;
+  font-size: 15px;
+}

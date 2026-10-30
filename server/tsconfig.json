@@ -1,0 +1,18 @@
+{
+  "compilerOptions": {
+    "target": "ES2023",
+    "lib": ["ES2023"],
+    "module": "preserve",
+    "moduleResolution": "bundler",
+    "strict": true,
+    "noEmit": true,
+    "skipLibCheck": true,
+    "isolatedModules": true,
+    "types": ["node"],
+    "paths": {
+      "@domain/*": ["../shared/domain/*"],
+      "@contract/*": ["../shared/contract/*"]
+    }
+  },
+  "include": ["src", "../shared"]
+}

@@ -1,0 +1,23 @@
+{
+  "name": "heroe-aleatorio-server",
+  "version": "1.0.0",
+  "private": true,
+  "type": "module",
+  "description": "Local server: settings, Twitch session, EventSub and the overlay's real-time channel.",
+  "engines": {
+    "node": ">=20.11.0"
+  },
+  "scripts": {
+    "start": "node --import tsx src/main.ts",
+    "typecheck": "tsc --noEmit"
+  },
+  "dependencies": {
+    "tsx": "^4.23.15",
+    "ws": "^8.22.0"
+  },
+  "devDependencies": {
+    "@types/node": "^26.6.5",
+    "@types/ws": "^8.18.2",
+    "typescript": "~6.0.2"
+  }
+}

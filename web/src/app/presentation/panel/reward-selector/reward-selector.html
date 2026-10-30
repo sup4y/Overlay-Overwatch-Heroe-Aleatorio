@@ -1,0 +1,80 @@
+@if (redemptions.rewardsError(); as e) {
+  <p class="error" role="alert">{{ 'errors.' + e.code | transloco: e.params }}</p>
+} @else if (redemptions.rewards(); as rewards) {
+  @if (collapsed() && chosen(); as r) {
+    <div class="reward selected static">
+      <span class="icon" [style.background]="r.color">
+        @if (r.imageUrl) {
+          <img [src]="r.imageUrl" alt="" />
+        }
+      </span>
+      <span class="body">
+        <span class="title">{{ r.title }}</span>
+        <span class="meta">
+          {{ 'panel.reward.cost' | transloco: { cost: r.cost } }}
+          @if (r.isPaused) {
+            · <span class="paused">{{ 'panel.reward.paused' | transloco }}</span>
+          }
+        </span>
+      </span>
+      <span
+        class="saved"
+        role="status"
+        [title]="rememberedUntil() ? ('panel.reward.rememberedUntil' | transloco: { date: rememberedUntil() }) : ''"
+      >
+        {{ 'panel.reward.saved' | transloco }}
+      </span>
+    </div>
+    <button type="button" class="change" (click)="editing.set(true)">{{ 'panel.reward.change' | transloco }}</button>
+  } @else if (rewards.length) {
+    <p>{{ 'panel.reward.hint' | transloco }}</p>
+    <ul class="rewards" role="listbox" [attr.aria-label]="'panel.reward.listLabel' | transloco">
+      @for (r of rewards; track r.id) {
+        <li>
+          <button
+            type="button"
+            class="reward"
+            role="option"
+            [class.selected]="isChosen(r)"
+            [attr.aria-selected]="isChosen(r)"
+            [disabled]="saving() || redemptions.loadingRewards()"
+            (click)="choose(r)"
+          >
+            <span class="icon" [style.background]="r.color">
+              @if (r.imageUrl) {
+                <img [src]="r.imageUrl" alt="" />
+              }
+            </span>
+            <span class="body">
+              <span class="title">{{ r.title }}</span>
+              <span class="meta">
+                {{ 'panel.reward.cost' | transloco: { cost: r.cost } }}
+                @if (r.isPaused) {
+                  · <span class="paused">{{ 'panel.reward.paused' | transloco }}</span>
+                }
+              </span>
+            </span>
+            <span class="check" aria-hidden="true">{{ isChosen(r) ? '✓' : '' }}</span>
+          </button>
+        </li>
+      }
+    </ul>
+
+    @if (redemptions.chosenRewardMissing()) {
+      <p class="warning">{{ 'panel.reward.missing' | transloco: { title: settings.current()?.rewardTitle } }}</p>
+    }
+    @if (chosen()) {
+      <button type="button" class="change" (click)="editing.set(false)">{{ 'panel.reward.cancel' | transloco }}</button>
+    }
+  } @else {
+    <p class="note">{{ 'panel.reward.empty' | transloco }}</p>
+    <a class="create" [href]="createRewardUrl()" target="_blank" rel="noopener">{{ 'panel.reward.create' | transloco }}</a>
+    <p class="note">{{ 'panel.reward.emptyHint' | transloco }}</p>
+  }
+} @else {
+  <p class="note">{{ 'panel.reward.loading' | transloco }}</p>
+}
+
+@if (error(); as e) {
+  <p class="error" role="alert">{{ 'errors.' + e.code | transloco: e.params }}</p>
+}
